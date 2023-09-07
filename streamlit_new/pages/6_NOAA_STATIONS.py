@@ -27,7 +27,7 @@ attributes = st.sidebar.radio('Attributes',(["Rainfall","Temperature"]))
 
 
 sta = {"Soyabean":['Chicago', 'Indiana', 'Iowa', 'Minnesota', 'Ohio'],
-            "Sugar":["bombay","lucknow","chennai","bihar_gatya"]}
+            "Sugar":["Bombay","Lucknow","Banglore","Chennai","Bihar"]}
 
 
 
@@ -75,7 +75,10 @@ for i in  list(sta[stations]):
 
 
     df  = filtered_df[filtered_df["Region"] == i]
-    st.dataframe(pivot_generation(df,val,cols,idx,agf[val],True).round(2),width = 700)
+    piv_df = pivot_generation(df,val,cols,idx,agf[val],True)
+    piv_df = piv_df/254
+
+    st.dataframe((piv_df).round(2),width = 700)
 
 
 
